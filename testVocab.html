@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vocab Tester</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #vocab-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      #vocab-box {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      #result {
+        display: none;
+        font-size: 24px;
+        color: green;
+        margin-top: 10px;
+      }
+
+      #feedback-buttons {
+        display: none;
+        margin-top: 10px;
+      }
+
+      .button-container {
+        position: absolute;
+        bottom: 20px;
+        display: flex;
+        gap: 10px;
+      }
+
+      button {
+        padding: 15px 25px;
+        font-size: 18px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .new-word {
+        background-color: yellow;
+      }
+
+      .show-result {
+        background-color: gray;
+        color: white;
+      }
+
+      .correct {
+        background-color: green;
+        color: white;
+      }
+
+      .incorrect {
+        background-color: red;
+        color: white;
+      }
+
+      #score {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Vocabulary Tester</h1>
+    <div id="vocab-container">
+      <div id="vocab-box">Click "New Word" to start</div>
+      <div id="result"></div>
+      <div id="feedback-buttons">
+        <button class="correct" onclick="markAnswer(true)">Correct</button>
+        <button class="incorrect" onclick="markAnswer(false)">Incorrect</button>
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="new-word" onclick="newWord()">New Word</button>
+      <button class="show-result" onclick="showResult()">Show Result</button>
+    </div>
+    <p id="score">Score: 0/0</p>
+
+    <script>
+      const vocabList = [
+        { vocab: "Compel", result: "บังคับ (v.)" },
+        { vocab: "Drastic", result: "รุนแรง (adj.)" },
+        { vocab: "Accomplish", result: "ทำสำเร็จ (v.)" },
+        { vocab: "Impartial", result: "เป็นกลาง (adj.)" },
+        { vocab: "Acknowledge", result: "ยอมรับ (v.)" },
+        { vocab: "Concise", result: "กระชับ (adj.)" },
+        { vocab: "Wordy", result: "ใช้คำฟุ่มเฟือย (adj.)" },
+        { vocab: "Foresee", result: "คาดการณ์ (v.)" },
+        { vocab: "Fortify", result: "เสริมสร้าง (v.)" },
+        { vocab: "Conduct", result: "จัดการ (v.)" },
+        { vocab: "Anecdote", result: "เกร็ดเล็กเกร็ดน้อย (n.)" },
+        { vocab: "Refuge", result: "ที่หลบภัย (n.)" },
+        { vocab: "Candid", result: "ตรงไปตรงมา (adj.)" },
+        { vocab: "Abrupt", result: "ทันทีทันใด (adj.)" },
+        { vocab: "Morale", result: "ขวัญกำลังใจ (n.)" },
+        { vocab: "Spectacular", result: "น่าตื่นตาตื่นใจ (adj.)" },
+        { vocab: "Striking", result: "โดดเด่น (adj.)" },
+        { vocab: "Appealing", result: "ดึงดูดใจ (adj.)" },
+        { vocab: "Illuminate", result: "ให้แสงสว่าง (v.)" },
+        { vocab: "Provoke", result: "ยั่วยุ (v.)" },
+        { vocab: "Desire", result: "ความปรารถนา (n.)" },
+        { vocab: "Menace", result: "ภัยคุกคาม (n.)" },
+        { vocab: "Comply", result: "ปฏิบัติตาม (v.)" },
+        { vocab: "Endorse", result: "รับรอง (v.)" },
+        { vocab: "Interfere", result: "แทรกแซง (v.)" },
+        { vocab: "Remedy", result: "การเยียวยา (n.)" },
+        { vocab: "Novice", result: "มือใหม่ (n.)" },
+        { vocab: "Imminent", result: "ใกล้เข้ามา (adj.)" },
+        { vocab: "Profound", result: "ลึกซึ้ง (adj.)" },
+        { vocab: "Condemn", result: "ประณาม (v.)" },
+        { vocab: "Compliment", result: "คำชม (n.)" },
+        { vocab: "Surpass", result: "เหนือกว่า (v.)" },
+        { vocab: "Tentative", result: "ไม่แน่นอน (adj.)" },
+        { vocab: "Prudent", result: "รอบคอบ (adj.)" },
+        { vocab: "Modest", result: "ถ่อมตัว (adj.)" },
+        { vocab: "Prosperous", result: "มั่งคั่ง (adj.)" },
+        { vocab: "Arrogant", result: "หยิ่งยโส (adj.)" },
+        { vocab: "Humane", result: "มีมนุษยธรรม (adj.)" },
+        { vocab: "Reminisce", result: "รำลึกถึง (v.)" },
+        { vocab: "Gather", result: "รวบรวม (v.)" },
+        { vocab: "Legitimate", result: "ถูกต้องตามกฎหมาย (adj.)" },
+        { vocab: "Naive", result: "ไร้เดียงสา (adj.)" },
+        { vocab: "Apathy", result: "ความเฉยเมย (n.)" },
+        { vocab: "Compassion", result: "ความเห็นอกเห็นใจ (n.)" },
+        { vocab: "Elegant", result: "สง่างาม (adj.)" },
+        { vocab: "Devise", result: "วางแผน (v.)" },
+        { vocab: "Convey", result: "ถ่ายทอด (v.)" },
+      ];
+
+      let currentWord = {};
+      let correctCount = 0;
+      let totalCount = 0;
+
+      function newWord() {
+        currentWord = vocabList[Math.floor(Math.random() * vocabList.length)];
+        document.getElementById("vocab-box").innerText = currentWord.vocab;
+        document.getElementById("result").style.display = "none";
+        document.getElementById("feedback-buttons").style.display = "none";
+      }
+
+      function showResult() {
+        document.getElementById("result").innerText = currentWord.result;
+        document.getElementById("result").style.display = "block";
+        document.getElementById("feedback-buttons").style.display = "flex";
+      }
+
+      function markAnswer(isCorrect, event) {
+        event.stopPropagation();
+
+        totalCount++;
+        if (isCorrect) {
+          correctCount++;
+        }
+
+        document.getElementById(
+          "score"
+        ).innerText = `Score: ${correctCount}/${totalCount}`;
+
+        document.getElementById("feedback-buttons").style.display = "none";
+
+        setTimeout(newWord, 1000);
+      }
+
+      // Adding event listeners to buttons
+      document.querySelector(".new-word").addEventListener("click", newWord);
+      document
+        .querySelector(".show-result")
+        .addEventListener("click", showResult);
+
+      document
+        .querySelectorAll(".correct")
+        .forEach((button) =>
+          button.addEventListener("click", (event) => markAnswer(true, event))
+        );
+
+      document
+        .querySelectorAll(".incorrect")
+        .forEach((button) =>
+          button.addEventListener("click", (event) => markAnswer(false, event))
+        );
+    </script>
+  </body>
+</html>
