@@ -27,6 +27,14 @@
         font-size: 32px;
         font-weight: bold;
         margin-bottom: 10px;
+        background: rgb(234, 234, 234);
+        height: 100px;
+        width: 50vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        box-shadow: 2px 2px rgb(196, 195, 195);
       }
 
       #result {
@@ -45,7 +53,7 @@
         position: absolute;
         bottom: 20px;
         display: flex;
-        gap: 10px;
+        gap: 5px;
         margin-top: 40px;
       }
 
@@ -70,7 +78,7 @@
       .correct {
         background-color: green;
         color: white;
-        margin-right: 20px;
+        margin-right: 10px;
       }
 
       .incorrect {
@@ -158,14 +166,62 @@
         { vocab: "Elegant", result: "สง่างาม (adj.)" },
         { vocab: "Devise", result: "วางแผน (v.)" },
         { vocab: "Convey", result: "ถ่ายทอด (v.)" },
+        { vocab: "Compel", result: "บังคับ (v.)" },
+        { vocab: "Drastic", result: "รุนแรง (adj.)" },
+        { vocab: "Accomplish", result: "ทำสำเร็จ (v.)" },
+        { vocab: "Impartial", result: "เป็นกลาง (adj.)" },
+        { vocab: "Acknowledge", result: "ยอมรับ (v.)" },
+        { vocab: "Concise", result: "กระชับ (adj.)" },
+        { vocab: "Wordy", result: "ใช้คำฟุ่มเฟือย (adj.)" },
+        { vocab: "Foresee", result: "คาดการณ์ (v.)" },
+        { vocab: "Fortify", result: "เสริมสร้าง (v.)" },
+        { vocab: "Conduct", result: "จัดการ (v.)" },
+        { vocab: "Anecdote", result: "เกร็ดเล็กเกร็ดน้อย (n.)" },
+        { vocab: "Refuge", result: "ที่หลบภัย (n.)" },
+        { vocab: "Candid", result: "ตรงไปตรงมา (adj.)" },
+        { vocab: "Abrupt", result: "ทันทีทันใด (adj.)" },
+        { vocab: "Morale", result: "ขวัญกำลังใจ (n.)" },
+        { vocab: "Spectacular", result: "น่าตื่นตาตื่นใจ (adj.)" },
+        { vocab: "Striking", result: "โดดเด่น (adj.)" },
+        { vocab: "Appealing", result: "ดึงดูดใจ (adj.)" },
+        { vocab: "Illuminate", result: "ให้แสงสว่าง (v.)" },
+        { vocab: "Provoke", result: "ยั่วยุ (v.)" },
+        { vocab: "Desire", result: "ความปรารถนา (n.)" },
+        { vocab: "Menace", result: "ภัยคุกคาม (n.)" },
+        { vocab: "Comply", result: "ปฏิบัติตาม (v.)" },
+        { vocab: "Endorse", result: "รับรอง (v.)" },
+        { vocab: "Interfere", result: "แทรกแซง (v.)" },
+        { vocab: "Remedy", result: "การเยียวยา (n.)" },
+        { vocab: "Novice", result: "มือใหม่ (n.)" },
+        { vocab: "Imminent", result: "ใกล้เข้ามา (adj.)" },
+        { vocab: "Profound", result: "ลึกซึ้ง (adj.)" },
+        { vocab: "Condemn", result: "ประณาม (v.)" },
+        { vocab: "Compliment", result: "คำชม (n.)" },
+        { vocab: "Surpass", result: "เหนือกว่า (v.)" },
+        { vocab: "Tentative", result: "ไม่แน่นอน (adj.)" },
+        { vocab: "Prudent", result: "รอบคอบ (adj.)" },
+        { vocab: "Modest", result: "ถ่อมตัว (adj.)" },
+        { vocab: "Prosperous", result: "มั่งคั่ง (adj.)" },
+        { vocab: "Arrogant", result: "หยิ่งยโส (adj.)" },
+        { vocab: "Humane", result: "มีมนุษยธรรม (adj.)" },
+        { vocab: "Reminisce", result: "รำลึกถึง (v.)" },
+        { vocab: "Gather", result: "รวบรวม (v.)" },
+        { vocab: "Legitimate", result: "ถูกต้องตามกฎหมาย (adj.)" },
+        { vocab: "Naive", result: "ไร้เดียงสา (adj.)" },
+        { vocab: "Apathy", result: "ความเฉยเมย (n.)" },
+        { vocab: "Compassion", result: "ความเห็นอกเห็นใจ (n.)" },
+        { vocab: "Elegant", result: "สง่างาม (adj.)" },
+        { vocab: "Devise", result: "วางแผน (v.)" },
+        { vocab: "Convey", result: "ถ่ายทอด (v.)" },
       ];
-
       let currentWord = {};
       let correctCount = 0;
       let totalCount = 0;
+      let index;
 
       function newWord() {
-        currentWord = vocabList[Math.floor(Math.random() * vocabList.length)];
+        const index = Math.floor(Math.random() * vocabList.length);
+        currentWord = vocabList[index];
         document.getElementById("vocab-box").innerText = currentWord.vocab;
         document.getElementById("result").style.display = "none";
         document.getElementById("feedback-buttons").style.display = "none";
@@ -183,6 +239,7 @@
         totalCount++;
         if (isCorrect) {
           correctCount++;
+          vocabList.splice(index, 1);
         }
 
         document.getElementById(
