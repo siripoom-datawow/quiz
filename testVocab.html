@@ -106,6 +106,7 @@
     <div id="vocab-container">
       <div id="vocab-box">Click "New Word" to start</div>
       <div id="result"></div>
+      <div id="example"></div>
       <div id="feedback-buttons">
         <button class="correct" onclick="markAnswer(true)">Correct</button>
         <button class="incorrect" onclick="markAnswer(false)">Incorrect</button>
@@ -216,7 +217,100 @@
         { vocab: "Exploit", result: "ใช้ประโยชน์, เอาเปรียบ (v.)" },
         { vocab: "Enrich", result: "ทำให้มั่งคั่ง, ทำให้สมบูรณ์ (v.)" },
         { vocab: "Amend", result: "แก้ไข, ปรับปรุง (v.)" },
+        { vocab: "Strive", result: "พยายาม (v.)" },
+        { vocab: "Assess", result: "ประเมิน (v.)" },
+        { vocab: "Eccentric", result: "ผิดปกติ, แปลกประหลาด (adj.)" },
+        { vocab: "Add", result: "เพิ่ม (v.)" },
+        { vocab: "Affluent", result: "มั่งคั่ง, ร่ำรวย (adj.)" },
+        { vocab: "Absurd", result: "ไร้สาระ, เหลวไหล (adj.)" },
+        { vocab: "Prudent", result: "รอบคอบ, สุขุม (adj.)" },
+        { vocab: "Rational", result: "มีเหตุผล (adj.)" },
+        { vocab: "Patriotic", result: "รักชาติ (adj.)" },
+        { vocab: "Liable", result: "รับผิดชอบ, มีแนวโน้ม (adj.)" },
+        { vocab: "Dubious", result: "น่าสงสัย (adj.)" },
+        { vocab: "Obsolete", result: "ล้าสมัย (adj.)" },
+        { vocab: "Harass", result: "คุกคาม, รบกวน (v.)" },
+        { vocab: "Ritual", result: "พิธีกรรม (n.)" },
+        { vocab: "Arbitrary", result: "ตามอำเภอใจ (adj.)" },
+        { vocab: "Assail", result: "โจมตี, วิพากษ์วิจารณ์ (v.)" },
+        { vocab: "Calamity", result: "ภัยพิบัติ (n.)" },
+        { vocab: "Breeze", result: "ลมพัดเบา ๆ, เรื่องง่าย (n.)" },
+        { vocab: "Obscure", result: "คลุมเครือ, ไม่ชัดเจน (adj.)" },
+        { vocab: "Notable", result: "โดดเด่น, น่าสังเกต (adj.)" },
+        { vocab: "Frugal", result: "มัธยัสถ์ (adj.)" },
+        { vocab: "Hasty", result: "เร่งรีบ, ใจร้อน (adj.)" },
+        { vocab: "Venture", result: "เสี่ยงภัย, ธุรกิจเสี่ยง (n./v.)" },
+        { vocab: "Attribute", result: "คุณลักษณะ, ถือว่าเป็นของ (n./v.)" },
+        { vocab: "Ridicule", result: "เยาะเย้ย, ถากถาง (v.)" },
+        { vocab: "Skeptical", result: "สงสัย, กังขา (adj.)" },
+        { vocab: "Stubborn", result: "ดื้อรั้น, หัวแข็ง (adj.)" },
+        { vocab: "Dispense", result: "แจกจ่าย, ให้บริการ (v.)" },
+        { vocab: "Finite", result: "จำกัด, มีขอบเขต (adj.)" },
+        { vocab: "Lure", result: "ล่อ, ดึงดูด (v.)" },
+        { vocab: "Distort", result: "บิดเบือน (v.)" },
+        { vocab: "Mourn", result: "โศกเศร้า (v.)" },
+        { vocab: "Sophisticated", result: "ซับซ้อน, ช่ำชอง (adj.)" },
+        { vocab: "Harmony", result: "ความกลมกลืน, ความสามัคคี (n.)" },
+        { vocab: "Flaw", result: "ข้อบกพร่อง (n.)" },
+        { vocab: "Conventional", result: "ตามแบบแผน, ดั้งเดิม (adj.)" },
+        { vocab: "Immoral", result: "ผิดศีลธรรม (adj.)" },
+        { vocab: "Scrutinize", result: "ตรวจสอบอย่างละเอียด (v.)" },
+        { vocab: "Succumb", result: "ยอมจำนน, พ่ายแพ้ (v.)" },
+        { vocab: "Devastate", result: "ทำลายล้าง (v.)" },
+        { vocab: "Obedience", result: "การเชื่อฟัง (n.)" },
+        { vocab: "Notorious", result: "มีชื่อเสียงในทางลบ (adj.)" },
+        { vocab: "Contemporary", result: "ร่วมสมัย, สมัยใหม่ (adj.)" },
+        { vocab: "Notion", result: "ความคิด, ความเชื่อ (n.)" },
+        { vocab: "Confiscate", result: "ยึด, ริบ (v.)" },
+        { vocab: "Seize", result: "จับ, ยึด (v.)" },
+        { vocab: "Lucrative", result: "ทำกำไร, ให้ผลตอบแทนสูง (adj.)" },
+        { vocab: "Incorporate", result: "รวมเข้าไว้ด้วยกัน (v.)" },
+        { vocab: "Benevolent", result: "เมตตา, กรุณา (adj.)" },
+        { vocab: "Designate", result: "กำหนด, แต่งตั้ง (v.)" },
+        { vocab: "Portray", result: "พรรณนา, วาดภาพ (v.)" },
+        { vocab: "Narrate", result: "บรรยาย, เล่าเรื่อง (v.)" },
+        { vocab: "Prevalent", result: "แพร่หลาย, เป็นที่นิยม (adj.)" },
+        { vocab: "Imitate", result: "เลียนแบบ (v.)" },
+        { vocab: "Intimidate", result: "ข่มขู่ (v.)" },
+        { vocab: "Detrimental", result: "เป็นอันตราย, มีผลเสีย (adj.)" },
+        { vocab: "Formulate", result: "กำหนด, สร้างสูตร (v.)" },
+        { vocab: "Ultimate", result: "ที่สุด, สุดท้าย (adj.)" },
+        { vocab: "Indispensable", result: "จำเป็นอย่างยิ่ง (adj.)" },
+        { vocab: "Dispensable", result: "ไม่จำเป็น (adj.)" },
+        { vocab: "Dwindle", result: "ลดลง, หดตัว (v.)" },
+        { vocab: "Shrink", result: "หด, ย่อ (v.)" },
+        { vocab: "Nurture", result: "เลี้ยงดู, บำรุง (v.)" },
+        { vocab: "Nourish", result: "บำรุงเลี้ยง, ให้สารอาหาร (v.)" },
+        { vocab: "Augment", result: "เพิ่มพูน (v.)" },
+        { vocab: "Revise", result: "ปรับปรุง, แก้ไข (v.)" },
+        { vocab: "Resemble", result: "คล้ายคลึง (v.)" },
+        { vocab: "Trivial", result: "เล็กน้อย, ไม่สำคัญ (adj.)" },
+        { vocab: "Provincial", result: "บ้านนอก, ใจแคบ (adj.)" },
+        { vocab: "Degrading", result: "ที่ทำให้เสื่อมเสีย (adj.)" },
+        { vocab: "Apathetic", result: "ไม่แยแส, ไม่สนใจ (adj.)" },
+        { vocab: "Ignorant", result: "ไม่รู้, ขาดความรู้ (adj.)" },
+        { vocab: "Zealous", result: "กระตือรือร้น (adj.)" },
+        { vocab: "Irrelevant", result: "ไม่เกี่ยวข้อง (adj.)" },
+        { vocab: "Minuscule", result: "เล็กมาก (adj.)" },
+        { vocab: "Intensify", result: "เพิ่มความรุนแรง (v.)" },
+        { vocab: "Precede", result: "มาก่อน, นำหน้า (v.)" },
+        { vocab: "Appalling", result: "น่ากลัว, น่าตกใจ (adj.)" },
+        { vocab: "Lenient", result: "ผ่อนปรน, ใจดี (adj.)" },
+        { vocab: "Yielding", result: "ยอมแพ้, โค้งงอได้ (adj.)" },
+        { vocab: "Amicable", result: "เป็นมิตร, สุภาพ (adj.)" },
+        { vocab: "Affectionate", result: "รักใคร่, อ่อนโยน (adj.)" },
+        { vocab: "Prompt", result: "ฉับไว, รวดเร็ว (adj.)" },
+        { vocab: "Merchandise", result: "สินค้า (n.)" },
+        { vocab: "Abridge", result: "ย่อ, ตัดทอน (v.)" },
+        { vocab: "Inquire", result: "สอบถาม, สืบสวน (v.)" },
+        { vocab: "Refine", result: "กลั่น, ทำให้บริสุทธิ์ (v.)" },
+        { vocab: "Industrious", result: "ขยันหมั่นเพียร (adj.)" },
+        { vocab: "Diligent", result: "ขยัน, อุตสาหะ (adj.)" },
+        { vocab: "Perpetual", result: "ตลอดกาล, ต่อเนื่อง (adj.)" },
+        { vocab: "Eternal", result: "นิรันดร์ (adj.)" },
+        { vocab: "Prestigious", result: "มีชื่อเสียง, มีเกียรติ (adj.)" },
       ];
+
       let currentWord = {};
       let correctCount = 0;
       let totalCount = 0;
@@ -233,6 +327,9 @@
       function showResult() {
         document.getElementById("result").innerText = currentWord.result;
         document.getElementById("result").style.display = "block";
+        document.getElementById("feedback-buttons").style.display = "flex";
+        document.getElementById("example").innerText = currentWord.example;
+        document.getElementById("example").style.display = "block";
         document.getElementById("feedback-buttons").style.display = "flex";
       }
 
