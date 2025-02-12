@@ -42,11 +42,12 @@
         font-size: 24px;
         color: green;
         margin-top: 10px;
+        margin-bottom: 10px;
       }
 
       #feedback-buttons {
         display: none;
-        margin-top: 10px;
+        margin-top: 20px;
       }
 
       .button-container {
@@ -106,7 +107,7 @@
     <div id="vocab-container">
       <div id="vocab-box">Click "New Word" to start</div>
       <div id="result"></div>
-      <div id="example"></div>
+      <!-- <div id="example"></div> -->
       <div id="feedback-buttons">
         <button class="correct" onclick="markAnswer(true)">Correct</button>
         <button class="incorrect" onclick="markAnswer(false)">Incorrect</button>
@@ -117,7 +118,6 @@
       <button class="show-result" onclick="showResult()">Show Result</button>
     </div>
     <p id="score">Score: 0/0</p>
-
     <script>
       const vocabList = [
         { vocab: "Compel", result: "บังคับ (v.)" },
@@ -317,10 +317,11 @@
       let index;
 
       function newWord() {
-        const index = Math.floor(Math.random() * vocabList.length);
+        index = Math.floor(Math.random() * vocabList.length);
         currentWord = vocabList[index];
         document.getElementById("vocab-box").innerText = currentWord.vocab;
         document.getElementById("result").style.display = "none";
+        document.getElementById("example").style.display = "none";
         document.getElementById("feedback-buttons").style.display = "none";
       }
 
