@@ -328,7 +328,9 @@
         document.getElementById("result").innerText = currentWord.result;
         document.getElementById("result").style.display = "block";
         document.getElementById("feedback-buttons").style.display = "flex";
-        document.getElementById("example").innerText = currentWord.example;
+        document.getElementById("example").innerText = `Word number ${
+          index + 1
+        } of ${vocabList.length}`;
         document.getElementById("example").style.display = "block";
         document.getElementById("feedback-buttons").style.display = "flex";
       }
